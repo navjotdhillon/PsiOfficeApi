@@ -14,7 +14,7 @@ namespace psiOfficeAPI.Models.Report.Service
         {
             string sql = "select week as category,";
             sql += "invoice_flag as series,";
-            sql += "round(sum(est_days) / (5 * (select count(*) from employee_schedule)) * 100, 0) as value ";
+            sql += "sum(c_pct) as value ";
             sql += "from br_op_workload_by_week( ? ) group by week, invoice_flag order by week asc, invoice_flag desc";
 
             List<ChartVM> vm = new List<ChartVM>();
